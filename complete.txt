@@ -1,0 +1,666 @@
+// Set 1 Assignement 1
+
+import java.util.Scanner;
+
+class Set1_1 {
+  public static void main(String[] args) {
+    Scanner sc= new Scanner(System.in);
+    int a = sc.nextInt();
+    sc.close();
+    String s = String.valueOf(a);
+    char[] arr = s.toCharArray();
+    int l = arr.length - 1;
+    while (l!=-1) {
+        System.out.print(arr[l]);
+        l--;
+        
+    } 
+
+  }  
+    
+}
+
+//***********************************************************************************************
+//Set 1 Assignement 2
+
+import java.util.Scanner;
+
+public class Set1_2{
+    
+    public static  boolean canAlternate(String bin_no){
+        char[] arr = bin_no.toCharArray();
+        int a = 0;  //1
+        int b = 0;  //0
+
+        for(int i= 0; i<arr.length; i++){
+            if(arr[i]=='1'){
+                a++;
+            }
+            else if(arr[i] == '0'){
+                b++;
+            }
+            else{
+                return false;
+            }
+
+        }
+        if(a==b || a-b==1 || a-b==-1)
+            return true;  
+        else
+            return false;      
+    }
+    
+    public static void main(String [] args){
+     Scanner sc =new Scanner(System.in);
+     int n = sc.nextInt();
+     sc.close();
+    System.out.println(Set1_2.canAlternate(String.valueOf(n))); 
+    }
+}
+
+//***********************************************************************************************
+//Set 1 Assignement 3
+
+public class Set1_3 {
+    public static void swap(int n){
+        int d = n%10;
+        int num = n/10;
+        int swapped = d*10+num;
+        if(n<swapped){
+            System.out.println(false);
+        }
+        else{
+            System.out.println(true);
+        }
+    }
+
+    public static void main(String args[]){
+        Set1_3.swap(98);
+        Set1_3.swap(19);
+        Set1_3.swap(98);
+
+    }   
+}
+
+//***********************************************************************************************
+//Set 1 Assignement 5
+
+class Sports{
+    public void getTeamSize(){
+        System.out.println("The Team Contains N numbers");
+    }
+}
+class FootBall extends Sports{
+    @Override
+    public void getTeamSize(){
+        System.out.println("The Team Contains 10 numbers");
+    }
+}
+class run1{
+    public static void main(String[] args) {
+        FootBall f= new FootBall();
+        f.getTeamSize();
+
+    }
+}
+
+//***********************************************************************************************
+//Set 1 Assignement 6
+
+public class Set1_6{
+    private String s;
+     Set1_6(String k){
+         this.s = k;
+         
+     }
+     public  void firstNonRepeat(){
+         char[] arr = this.s.toCharArray();
+         for(char c: arr){
+             if(this.s.indexOf(c) ==this.s.lastIndexOf(c)){
+                 System.out.println(c);
+                 break;
+             }
+         }
+     }
+     public static void main(String[] args){
+        Set1_6 s = new Set1_6("gcc basic training"); 
+         s.firstNonRepeat();
+ 
+     }
+ }
+
+ //***********************************************************************************************
+//Set 1 Assignement 7
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Set1_7 {
+    public static void main(String[] args) {
+        String s = "intern at tugcc";
+
+        List<Integer> spaces = new ArrayList<>();
+        char[] string = s.toCharArray();
+        
+        for (int i = 0; i < s.length(); i++){
+            if(string[i] == ' '){
+                spaces.add(i);
+            }
+        }
+        String res = "";
+
+        int cnt = 0;
+        int length = string.length - 1;
+        for(int i = length; i != -1; i --){
+            
+            for(int index : spaces){
+                if(index == cnt){
+                    res += ' ';
+                    cnt++;
+                }
+            }
+            if(string[i] != ' '){
+                res += string[i];
+                cnt++;
+            }
+            
+        }
+        System.out.println(res);
+    }
+}
+
+//***********************************************************************************************
+//Set 1 Assignement 8
+
+public class Set1_8 {
+    public static void main(String args[]){
+        int[] num = {5,10,15,20,25,15,25,35};
+        for(int i=0; i<num.length; i++){
+            for(int j= i+1; j<num.length; j++){
+                if(num[i] == num[j]){
+                        System.out.println(num[i]);
+                }
+            }  
+        } 
+        
+
+    }
+}
+
+//***********************************************************************************************
+//Set 1 Assignement 9
+
+class pascalsTriangle {
+    public int factorial(int i)
+    {
+        if (i == 0)
+            return 1;
+        return i * factorial(i - 1);
+    }
+    public static void printPascal(int n)
+    {
+        for (int line = 1; line <= n; line++) {
+            for (int j = 0; j <= n - line; j++) {
+                System.out.print(" ");
+            }
+            int C = 1;
+            for (int i = 1; i <= line; i++) {
+ 
+                System.out.print(C + " ");
+                C = C * (line - i) / i;
+            }
+            System.out.println();
+        }
+    }
+ 
+    public static void main(String[] args)
+    {
+        int n = 5;
+        printPascal(n);
+    }
+}
+
+//***********************************************************************************************
+//Set 1 Assignement 10
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+class SET1_A10 {
+        public static void main(String[] args) {
+            Scanner sc= new Scanner((System.in));
+            System.out.println("Enter the input String:-");
+            String input= sc.nextLine();
+            sc.close();
+            input=input.toUpperCase();
+            HashMap<Character,Integer> map= new HashMap<>();
+            for(char c:input.toCharArray()){
+                if(!map.containsKey(c))
+                {
+                    map.put(c,1);
+                }else{
+                    int freq= map.get(c);
+                    map.put(c,freq+1);
+                }
+            }
+            Map.Entry<Character,Integer> x = map.entrySet().iterator().next();
+            char key1 = x.getKey();
+            map.remove(key1);
+            for(Map.Entry<Character,Integer> e:map.entrySet()){
+                
+
+                System.out.println(e.getKey()+" -> "+e.getValue());
+            }
+    }
+}    
+
+
+//***********************************************************************************************
+//Set 1 Assignement 11
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+class createTxtFile{
+    public static void main(String[] args) throws IOException {
+        String TEXT_FILE = "/home/filthysalad/Desktop/textFile.txt";
+
+        Path textFilePath = Paths.get(TEXT_FILE);
+        Files.createFile(textFilePath);
+        
+        File file = new File("/home/filthysalad/Desktop/textFile.txt"); 
+        String text = "HELLO THERE";
+        if (file.exists()){
+            Files.writeString(textFilePath, text);
+        }
+    }
+    
+}
+
+//***********************************************************************************************
+//Set 1 Assignement 12
+
+class CustomException extends Exception {
+    String message;
+    CustomException(String str) {
+       message = str;
+    }
+    public String toString() {
+       return ("Custom Exception Occurred : " + message);
+    }
+ }
+class MainException {
+    public static void main(String args[]) {
+       try {
+          throw new CustomException("This is a custom message");
+       } catch(CustomException e) {
+          System.out.println(e);
+       }
+    }
+ }
+
+ //***********************************************************************************************
+//Set 3 Assignement 4
+
+class Rectangle{
+    int l;
+    int b;
+    public Rectangle(int x, int y){
+        this.l = x;
+        this.b = y;
+    }
+    public void area(){
+        System.out.println(this.l * this.b);
+    }
+    public void perimeter(){
+        System.out.println(2 * (this.l + this.b));
+    }
+}
+class square extends Rectangle1{
+    int l;
+    public square(int s){
+        super(s, s);
+    }
+}
+class demo1{
+    public static void main(String [] args){
+        Rectangle1 r1 = new Rectangle1(12, 13);
+        r1.area();
+        r1.perimeter();
+        square s = new square(10);
+        s.area();
+        s.perimeter();
+
+    }
+}  
+
+//***********************************************************************************************
+//Set 3 Assignement 5
+
+class Rectangle1{
+    int l;
+    int b;
+    public Rectangle1(int x, int y){
+        this.l = x;
+        this.b = y;
+    }
+    public int area(){
+        return (this.l * this.b);
+    }
+    public int perimeter(){
+        return(2 * (this.l + this.b));
+    }
+}
+class square1 extends Rectangle1{
+    int l;
+    public square1(int s){
+        super(s, s);
+    }
+}
+class demo{
+    public static void main(String [] args){
+        Rectangle1 r1 = new Rectangle1(12, 13);
+        System.out.println(r1.area());
+        System.out.println(r1.perimeter());
+        square s = new square(10);
+        System.out.println(s.area());
+        System.out.println(s.perimeter());
+        square1[] arr;
+        arr = new square1[10];
+        for(int i = 0; i <10 ;i ++){
+            arr[i] = new square1((i+1) * 10);
+            System.out.println("FOR SQUARE NUMBER: " + i + " : Area : "+arr[i].area() +" Peri:"+ arr[i].perimeter());
+        }
+
+    }
+} 
+
+//***********************************************************************************************
+//Set 3 Assignement 6
+
+
+class shape{
+    public void display_shapeSHA(){
+        System.out.println("THIS IS SHAPE");
+    }
+}
+class rectangle extends shape{
+    public  void display_shapeREC(){
+        System.out.println("THIS IS RECTANGULAR SHAPE");
+    }
+}
+class circle extends shape{
+    public  void display_shapeC(){
+        System.out.println("THIS IS CIRCULAR SHAPE");
+    }
+}
+class SQUARE extends rectangle{
+    public  void display_shapeSQ(){
+        System.out.println("SQUARE IS A RECTANGLE");
+    }
+}
+class run{
+    public static void main(String[] args) {
+        SQUARE sq = new SQUARE();
+        sq.display_shapeSHA();
+        sq.display_shapeREC();
+    }
+}
+
+//***********************************************************************************************
+//Set 3 Assignement 7
+
+//***********************************************************************************************
+//DSA 1 Assignement 1
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Dsa1_1 {
+
+    static Scanner sc= new Scanner(System.in);
+    public static void removeFrom(ArrayList<Integer> arr ,int size){
+      System.out.print("enter the index from which u want to remove elements : ");  
+      int fromIndex = sc.nextInt();
+      if(fromIndex>=0 && fromIndex<size){
+
+        ArrayList<Integer> arr1 = new ArrayList<>();
+        for(int i = 0; i<size; i++){
+            if(i==fromIndex){
+                break;
+            }
+            arr1.add(arr.get(i));
+        }
+        System.out.print("New array is : ");
+        for(int i : arr1){
+            System.out.print("  "+i);
+        }
+
+      }
+    }
+    public static void removeFromTo(ArrayList<Integer> arr,int size){
+        System.out.println();
+        System.out.print("enter the index from which u want to remove elements : ");  
+        int fromIndex = sc.nextInt();
+        System.out.print("enter the index till which u want to remove elements : ");  
+        int toIndex = sc.nextInt();
+        if(fromIndex>=0 && fromIndex<size && toIndex < size && toIndex > fromIndex){
+
+            ArrayList<Integer> arr1 = new ArrayList<>();
+    
+            for(int i = 0; i<size; i++){
+                if(i>fromIndex && i< toIndex){
+                    continue;
+                }
+                arr1.add(arr.get(i));
+            
+            }
+            System.out.print("New array is : ");
+            for(int i : arr1){
+                System.out.print("  "+i);
+            }
+    
+          }
+    }
+    public static void main (String [] args){
+        ArrayList<Integer>  arr = new ArrayList<>();
+       
+        System.out.print("Enter the size of the array :");
+        int  a = sc.nextInt();
+        for(int i = 0; i<a;i++){
+            int num  = sc.nextInt();
+            arr.add(num);
+        }
+            Dsa1_1.removeFrom(arr, a);
+            Dsa1_1.removeFromTo(arr, a);    
+    }
+}
+
+//***********************************************************************************************
+//DSA 1 Assignement 2
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Dsa1_2 {
+    public static void addAtIndex(ArrayList<Integer> arr,int size, int index, int newNumber){
+        ArrayList<Integer> temp = new ArrayList<>();
+        for(int i = 0; i < size; i++){
+            if(i == index){
+                temp.add(newNumber);
+            }
+            temp.add(arr.get(i));
+        }
+        System.out.print("New array is : ");
+        for(int i : temp){
+            System.out.print("  "+i);
+        }
+    }
+    public static void main (String [] args){
+        ArrayList<Integer>  arr = new ArrayList<>();
+       Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of the array :");
+        int  a = sc.nextInt();
+        for(int i = 0; i<a;i++){
+            int num  = sc.nextInt();
+            arr.add(num);
+        }
+        System.out.print("ENTER THE INDEX AT WHICH YOU WANT TO ADD ELEMENT: ");
+        int index = sc.nextInt();
+        System.out.print("ENTER THE NUMBER YOU WANT TO ADD: ");
+        int newNumber = sc.nextInt();
+        Dsa1_2.addAtIndex(arr, a, index, newNumber);
+        sc.close();
+    }
+    
+}
+
+//***********************************************************************************************
+//DSA 1 Assignement 3
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+class customStack {
+    private  LinkedList<Integer> ll = new LinkedList<>(); 
+    private  int size;
+
+    customStack(LinkedList<Integer> ll, int size){
+        this.ll= ll;
+        this.size = size;
+}
+    public void push( int element){
+        if(!isFull()){
+            this.ll.addFirst(element);
+        }
+    }
+    public int pop(){
+        if(!isEmpty()){
+            int num = this.ll.getFirst();
+            this.ll.removeFirst();
+            return num;
+        }
+        return 0;
+
+    }
+
+    public boolean isEmpty(){
+        if(this.ll.size() == 0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isFull(){
+        if(this.ll.size() ==this.size){
+            return true;
+        }
+        return false;
+    }
+    public int peek(){
+        if(!isEmpty()){
+            int num = this.ll.peekFirst();
+            return num;
+            
+        }
+        return 0;
+        
+    }
+    public void display(){
+        System.out.print("TOP -> ");
+        for(int i: this.ll){
+            System.out.print(" "+i);
+        }
+        System.out.print(" -> Last");
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        LinkedList<Integer> ll = new LinkedList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of stack : ");
+        int size = sc.nextInt();
+        customStack c = new customStack(ll, size);
+        c.push(10);
+        c.push(20);
+        c.push(30);
+        c.push(40);
+        c.push(50);
+        System.out.println("the first element is :"+c.peek());
+        c.display();
+        System.out.println("THE POPPED ELEMENT IS : "+c.pop());
+        c.display();
+        sc.close();
+    }
+}
+
+//***********************************************************************************************
+//DSA 1 Assignement 4
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class queue {
+    private ArrayList<Integer> arr = new ArrayList<>();
+    private int size;
+    queue(ArrayList<Integer> arr, int size){
+        this.arr = arr;
+        this.size = size;
+    }
+    public void enqueue(int element){
+        if(!isFull()){
+            this.arr.add(element);
+        }
+    }
+
+    public boolean isEmpty(){
+        if (this.arr.size() == 0)
+            return true;
+        return false;
+    }
+
+    public boolean isFull(){
+        if(this.arr.size() == this.size)
+            return true;
+        return false;
+    }
+    
+    public int dequeue(){
+        if(!isEmpty()){
+            int res = this.arr.get(0);
+            this.arr.remove(0);
+            return res; 
+        }
+        return 0;
+    }
+
+    public void display(){
+        System.out.print("END ->");
+        for(int i: this.arr){
+            System.out.print(" "+i);
+        }
+        System.out.print(" -> TOP");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("ENTER THE SIZE OF THE QUEUE: ");
+        int size = sc.nextInt();
+        queue q = new queue(arr, size);
+        q.enqueue(55);
+        q.enqueue(100);
+        q.enqueue(25);
+        q.enqueue(15);
+        q.enqueue(90);
+        q.display();
+        System.out.println(q.dequeue());
+        q.display();
+
+    }
+}
+
